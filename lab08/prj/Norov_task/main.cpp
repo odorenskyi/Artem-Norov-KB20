@@ -35,10 +35,10 @@ int main()
     cout << "a + 5 > b + 2: " << boolalpha << (a + 5 > b + 2) << endl;
     cout << "x у дес€тковiй системi = " << dec << x << endl;
     cout << "x у шiстнадц€тковiй  системi = " << hex << x << endl;
-    cout << "x у дес€тковiй системi = " << dec << y << endl;
-    cout << "x у шiстнадц€тковiй  системi = " << hex << y << endl;
-    cout << "x у дес€тковiй системi = " << dec << z << endl;
-    cout << "x у шiстнадц€тковiй  системi = " << hex << z << endl;
+    cout << "y у дес€тковiй системi = " << dec << y << endl;
+    cout << "y у шiстнадц€тковiй  системi = " << hex << y << endl;
+    cout << "z у дес€тковiй системi = " << dec << z << endl;
+    cout << "z у шiстнадц€тковiй  системi = " << hex << z << endl;
     S = s_calculation(x, y, z);
     cout << "\n S = " << s_calculation(x, y, z) << endl;
     system("pause");
