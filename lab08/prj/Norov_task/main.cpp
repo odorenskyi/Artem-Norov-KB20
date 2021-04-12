@@ -19,15 +19,27 @@ int main()
     setlocale(LC_ALL, "Ukr");
     dev_information();
 
-    float x, y, z, S;
+    int x, y, z;
+    float S;
     char a, b;
-
     cout << "Уведiть x: ";
     cin >> x;
-    cout << "Уведiть y: ";
-    cin >> y;
-    cout << "Уведiть z: ";
-    cin >> z;
+    if(x < -21){
+        cout << "Некоректно введене значення, x не може буди меншим за -21";
+        return 0;
+    }
+    do{
+        cout << "Уведiть y: ";
+        cin >> y;
+        cout << "Уведiть z: ";
+        cin >> z;
+        if(y == 0 && z < 0){
+            cout << "Некоректно введене значення, y не може дорiвнювати нулю, поки z має вiд'ємне  значення" << endl;
+        }
+        if(z == 0 && y < 0){
+            cout << "Некоректно введене значення, z не може дорiвнювати нулю, поки y має вiд'ємне  значення" << endl;
+        }
+    }while((y == 0 && z < 0) || (z == 0 && y < 0));
     cout << "Уведiть a: ";
     cin >> a;
     cout << "Уведiть b: ";
@@ -42,5 +54,4 @@ int main()
     S = s_calculation(x, y, z);
     cout << "\n S = " << s_calculation(x, y, z) << endl;
     system("pause");
-    return 0;
 }
