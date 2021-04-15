@@ -3,8 +3,6 @@
 
 float s_calculation(float x, float y, float z);
 
-double wind_speed(double);
-
 double Beaufortmark(double);
 
 int Helmetsize(int length);

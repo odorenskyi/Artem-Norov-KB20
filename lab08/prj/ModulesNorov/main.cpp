@@ -13,10 +13,7 @@ float s_calculation(float x, float y, float z){
     float S = 0.5 *((pow(y,2) + 2 * z)/(sqrt(7*P + x))) - sqrt(exp(abs(x)) + (sqrt(abs(y - z))/sin(z*y)));
     return S;
 }
-double wind_speed(double W){
-    W = W * 1000;
-    return W;
-}
+
 double Beaufortmark(double W){
     if (W < 0.3){
         return 0.0;
@@ -84,8 +81,10 @@ int BinD15(int N){
         }
     }
     if(!(N & (mask_2 << 15))){
+        cout << "Кiлькiсть двiйкових нулiв = ";
         return Zerocount;
     }else{
+        cout << "Кiлькiсть двiйкових одиниць = ";
         return Onecount;
     }
 }
