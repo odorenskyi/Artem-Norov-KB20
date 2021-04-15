@@ -1,0 +1,17 @@
+# depslib dependency file v1.0
+1617992455 source:c:\users\user\desktop\ modulesnorov\main.cpp
+	<iostream>
+	<math.h>
+	<clocale>
+
+1618482216 source:d:\ggg\artem-norov-kb20\lab09\prj\modulesnorov\main.cpp
+	<iostream>
+	<math.h>
+	<clocale>
+	<stdlib.h>
+	<string>
+	"ModulesNorov.h"
+
+1618481069 d:\ggg\artem-norov-kb20\lab09\prj\modulesnorov\modulesnorov.h
+	<string>
+
