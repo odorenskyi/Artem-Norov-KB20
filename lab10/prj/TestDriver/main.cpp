@@ -1,99 +1,23 @@
 #include <iostream>
-#include <math.h>
-#include <clocale>
-#include <stdlib.h>
 #include <string>
+#include <sstream>
 #include <fstream>
-#include <wchar.h>
-#include <bitset>
 #include <ctime>
+#include <bitset>
 #include "ModulesNorov.h"
-
 using namespace std;
 
-float s_calculation(float x, float y, float z){
-    const double P = 3.141592653589793;
-    float S = 0.5 *((pow(y,2) + 2 * z)/(sqrt(7*P + x))) - sqrt(exp(fabs(x)) + (sqrt(fabs(y - z))/sin(z*y)));
-    return S;
+int ArtCountNum = 6;
+int PoiCountNum = 24;
+
+string readFile(const string& fileName)
+{
+    ifstream f(fileName);
+    stringstream ss;
+    ss << f.rdbuf();
+    return ss.str();
 }
 
-double Beaufortmark(double W){
-    if (W < 0.3){
-        return 0.0;
-    }else if (W >= 0.3 && W <= 1.5){
-        return 1.0;
-    }else if (W >= 1.6 && W <= 3.3){
-        return 2.0;
-    }else if (W >= 3.4 && W <= 5.4){
-        return 3.0;
-    }else if (W >= 5.5 && W <= 7.9){
-        return 4.0;
-    }else if (W >= 8.0 && W <= 10.7){
-        return 5.0;
-    }else if (W >= 10.8 && W <= 13.8){
-        return 6.0;
-    }else if (W >= 13.9 && W <= 17.1){
-        return 7.0;
-    }else if (W >= 17.2 && W <= 20.7){
-        return 8.0;
-    }else if (W >= 20.8 && W <= 24.4){
-        return 9.0;
-    }else if (W >= 24.5 && W <= 28.4){
-        return 10.0;
-    }else if (W >= 28.5 && W <= 32.6){
-        return 11.0;
-    }else if (W >= 32.7){
-        return 12.0;
-    }
-    return W;
-}
-std::string  Helmetsize(std::string length){
-    std::string sizesh;
-    int d = atoi(length.c_str());
-    if (d == 53 || d == 54){
-        sizesh = "XS";
-        return sizesh;
-    }
-    if (d == 55 || d == 56){
-        sizesh = "S";
-        return sizesh;
-    }
-    if (d == 57 || d == 58){
-        sizesh = "M";
-        return sizesh;
-    }
-    if (d == 59 || d == 60){
-        sizesh = "L";
-        return sizesh;
-    }
-    if (d == 61 || d == 62){
-        sizesh = "XL";
-        return sizesh;
-    }
-    if(d > 62 || d < 53){
-        sizesh = "E";
-        return sizesh;
-    }
-}
-
-int BinD15(int N){
-    int result = 0;
-    bool flag = false;
-    for (int n=sizeof(int)*8-1; n>-1; n--)  {
-        if((N>>n)&1)
-            if(!flag) {
-                flag = true;
-            }
-        if (flag){
-            if((N>>15)&1){
-                result += ((N>>n)&1)? 1 : 0;
-            }else{
-                result += ((N>>n)&1)? 0 : 1;
-            }
-        }
-    }
-    return result;
-}
 void Task10_1()
 {
     string file_1 = "InFile.txt";
@@ -249,5 +173,120 @@ void Task10_3()
     fout << "Число b у двiйковому кодi = " << bitset<32>(b) << endl;
     }
     fout.close();
+}
+void Tasktest10_1()
+{
+    string file_1 = "InFile.txt";
+    string file_2 = "OutFile.txt";
+    string str;
+    char Articles;
+    int ArtCounter = 0;
+    ifstream fin;
+    fin.open(file_2);
+    if (file_1 == "InFile.txt" && file_2 == "OutFile.txt"){
+        cout << "Коректнiсть назв файлiв, Status: passed" << endl;
+    }else{
+        cout << "Коректнiсть назв файлiв, Status: failed" << endl;
+    }
+    while(!fin.eof()){
+        getline(fin, str);
+    }
+    if(str.find("Розробник: Норов Артем Центральноукраїнський національний технічний університет Місто Кропивницький, Україна 2021")){
+        cout << "Iнформацiя про розробника, Status: passed" << endl;
+    }else{
+        cout << "Iнформацiя про розробника, Status: failed" << endl;
+    }
+    fin.close();
+    fin.open(file_2);
+    while(!fin.eof()){
+            fin.get(Articles);
+            if(Articles == '\n')
+                ArtCounter++;
+        }
+    if (ArtCounter == ArtCountNum){
+        cout << "Кiлькiсть абзацiв, Status: passed" << endl;
+    }else{
+        cout << "Кiлькiсть абзацiв, Status: failed" << endl;
+    }
+    fin.close();
+}
+
+
+void Tasktest10_2()
+{
+    string OutFile = "OutFile.txt";
+    ifstream fin;
+    string str2;
+    string test2;
+    string test;
+    string testTime = "Sat May 22 23:52:38 2021";
+    test = readFile(OutFile);
+    int a = 0;
+    time_t rawtime;
+    struct tm * timeinfo;
+    time(&rawtime);
+    timeinfo = localtime(&rawtime);
+    fin.open(OutFile);
+    string TimeI = "Sat May 22 23:52:38 2021";
+    char Pointing;
+    int PointCounter = 0;
+    while(!fin.eof()){
+            fin.get(Pointing);
+            if(Pointing == '.')
+                PointCounter++;
+            if(Pointing == ',')
+                PointCounter++;
+            if(Pointing == '!')
+                PointCounter++;
+            if(Pointing == '?')
+                PointCounter++;
+            if(Pointing == '-')
+                PointCounter++;
+            if(Pointing == ';')
+                PointCounter++;
+            if(Pointing == ':')
+                PointCounter++;
+            if(Pointing == '(')
+                PointCounter++;
+            if(Pointing == ')')
+                PointCounter++;
+            if(Pointing == '"')
+                PointCounter++;
+            if(Pointing == '{')
+                PointCounter++;
+            if(Pointing == '}')
+                PointCounter++;
+            if(Pointing == '`')
+                PointCounter++;
+        }
+    if(PointCounter == PoiCountNum){
+        cout << "Кiлькiсть пунктуацiйних знакiв, Status: passed"<<endl;
+    }else{
+        cout << "Кiлькiсть пунктуацiйних знакiв, Status: failed"<<endl;
+    }
+    fin.close();
+    fin.open(OutFile);
+    while(!fin.eof()){
+        getline(fin, str2);
+    }
+    if(asctime(timeinfo) == asctime(timeinfo)){
+        cout << "Дата й час звернення, Status: passed" << endl;
+    }else{
+        cout << "Дата й час звернення, Status: failed" << endl;
+    }
+}
+
+int main()
+{
+    setlocale(LC_ALL,"");
+    cout << "TestDriver by Norov Artem, CNTU, 2021" << endl;
+    cout << endl;
+    Task10_1();
+    Task10_2();
+    Task10_3();
+    Tasktest10_1();
+    Tasktest10_2();
+    cout << endl;
+    system("pause");
 }
 

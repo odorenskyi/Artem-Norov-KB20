@@ -1,10 +1,11 @@
 # depslib dependency file v1.0
-1618310508 source:d:\ggg\artem-norov-kb20\lab08\prj\norov_task\main.cpp
+1618418608 source:d:\ggg\artem-norov-kb20\lab08\prj\norov_task\main.cpp
 	<iostream>
 	"ModulesNorov.h"
 	<windows.h>
 	<locale.h>
 	<stdio.h>
 
-1618002667 d:\ggg\artem-norov-kb20\lab08\prj\modulesnorov.h
+1619974302 d:\ggg\artem-norov-kb20\lab08\prj\modulesnorov.h
+	<string>
 

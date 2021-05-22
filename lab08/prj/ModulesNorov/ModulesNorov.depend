@@ -4,14 +4,17 @@
 	<math.h>
 	<clocale>
 
-1620164975 source:d:\ggg\artem-norov-kb20\lab08\prj\modulesnorov\main.cpp
+1621716160 source:d:\ggg\artem-norov-kb20\lab08\prj\modulesnorov\main.cpp
 	<iostream>
 	<math.h>
 	<clocale>
 	<stdlib.h>
 	<string>
+	<fstream>
 	<wchar.h>
+	<bitset>
+	<ctime>
 	"ModulesNorov.h"
 
-1618002667 d:\ggg\artem-norov-kb20\lab08\prj\modulesnorov\modulesnorov.h
+1617999067 d:\ggg\artem-norov-kb20\lab08\prj\modulesnorov\modulesnorov.h
 
