@@ -24,19 +24,25 @@ void Task10_1()
     string file_2 = "OutFile.txt";
     ofstream fout;
     ifstream fin;
+    fin.open(file_2);
+    if (!fin.is_open()){
+        fin.close();
+        fout.open(file_2);
+        cout << "Помилка пiд час вiдкриття файлу, для роботи застосунка не виявленно файла \"OutFile.txt\"" << endl;
+        fout.close();
+        fin.open(file_2);
+    }
     char Articles;
     string WordFind;
     char c;
     int pos = 0;
     int ArtCounter = 0;
     fout.open(file_1);
-    fin.open(file_2);
     if (!fin.is_open()){
         cout << "Помилка пiд час вiдкриття файлу, для роботи застосунка не виявленно файла \"OutFile.txt\"" << endl;
-        system("pause");
     }
     if (!fout.is_open()){
-        cout << "Помилка пiд час вiдкриття файлу" << endl;
+        cout << "Помилка пiд час вiдкриття файлу, для роботи застосунка не виявленно файла \"InFile.txt\"" << endl;
     }else{
         fout << "Розробник: Норов Артем Центральноукраїнський нацiональний технiчний унiверситет Місто Кропивницький, Україна 2021";
         while(!fin.eof()){
