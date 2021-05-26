@@ -96,19 +96,29 @@ int BinD15(int N){
 }
 void Task10_1()
 {
-    string file_1 = "InFile.txt";
-    string file_2 = "OutFile.txt";
+    string file_1 = "OutFile.txt";
+    string file_2 = "InFile.txt";
     ofstream fout;
     ifstream fin;
+    fin.open(file_2);
+    if (!fin.is_open()){
+        fin.close();
+        fout.open(file_2);
+        cout << "Помилка пiд час вiдкриття файлу, для роботи застосунка не виявленно файла \"InFile.txt\"" << endl;
+        fout.close();
+        fin.open(file_2);
+    }
     char Articles;
     string WordFind;
     char c;
     int pos = 0;
     int ArtCounter = 0;
     fout.open(file_1);
-    fin.open(file_2);
+    if (!fin.is_open()){
+        cout << "Помилка пiд час вiдкриття файлу, для роботи застосунка не виявленно файла \"InFile.txt\"" << endl;
+    }
     if (!fout.is_open()){
-        cout << "Помилка пiд час вiдкриття файлу" << endl;
+        cout << "Помилка пiд час вiдкриття файлу, для роботи застосунка не виявленно файла \"OutFile.txt\"" << endl;
     }else{
         fout << "Розробник: Норов Артем Центральноукраїнський нацiональний технiчний унiверситет Місто Кропивницький, Україна 2021";
         while(!fin.eof()){
@@ -117,7 +127,7 @@ void Task10_1()
                 ArtCounter++;
         }
         fout << "\n";
-        fout << "Кiлькiсть абзацiв у файлi OutFile = " << ArtCounter << endl;
+        fout << "Кiлькiсть абзацiв у файлi InFile = " << ArtCounter << endl;
         fout << "\n";
         fin.close();
         fin.open(file_2);
@@ -126,7 +136,7 @@ void Task10_1()
             WordFind.push_back(c);
         }
         fin.close();
-        string arr[] {"університет","університету", "університетом","Україна","Україні", "Україною" , "Україно", "блокнот", "блокнота", "блокнотові" };
+        string arr[] {"університет","Україна","блокнот","університету","університетом","Україні", "Україною" , "Україно", "блокнота", "блокнотові" };
         pos = WordFind.find(*arr);
         if(pos == -1){
                 fout << "У файлi InFile.txt немає слiв: \"Україна\", \"унiверситет\" та \"блокнот\"";
@@ -140,7 +150,7 @@ void Task10_1()
 }
 void Task10_2()
 {
-    string file1 = "OutFile.txt";
+    string file1 = "InFile.txt";
     string file2 = "InFile.txt";
     char Pointing;
     int PointCounter = 0;
@@ -157,32 +167,45 @@ void Task10_2()
     }else{
         while(!fin.eof()){
             fin.get(Pointing);
-            if(Pointing == '.')
+            if(Pointing == '.'){
                 PointCounter++;
-            if(Pointing == ',')
+            }
+            if(Pointing == ','){
                 PointCounter++;
-            if(Pointing == '!')
+            }
+            if(Pointing == '!'){
                 PointCounter++;
-            if(Pointing == '?')
+            }
+            if(Pointing == '?'){
                 PointCounter++;
-            if(Pointing == '-')
+            }
+            if(Pointing == '-'){
                 PointCounter++;
-            if(Pointing == ';')
+            }
+            if(Pointing == ';'){
                 PointCounter++;
-            if(Pointing == ':')
+            }
+            if(Pointing == ':'){
                 PointCounter++;
-            if(Pointing == '(')
+            }
+            if(Pointing == '('){
                 PointCounter++;
-            if(Pointing == ')')
+            }
+            if(Pointing == ')'){
                 PointCounter++;
-            if(Pointing == '"')
+            }
+            if(Pointing == '"'){
                 PointCounter++;
-            if(Pointing == '{')
+            }
+            if(Pointing == '{'){
                 PointCounter++;
-            if(Pointing == '}')
+            }
+            if(Pointing == '}'){
                 PointCounter++;
-            if(Pointing == '`')
+            }
+            if(Pointing == '`'){
                 PointCounter++;
+            }
         }
         fout << "\n";
         fout << "Кiлькiсть пунктуацiйних знакiв у файлi = " << PointCounter << endl;
@@ -193,7 +216,7 @@ void Task10_2()
 }
 void Task10_3()
 {
-    string file2 = "InFile.txt";
+    string file2 = "OutFile.txt";
     ofstream fout;
     int x, y, z;
     int b = 0;
